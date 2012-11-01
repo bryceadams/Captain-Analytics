@@ -16,7 +16,7 @@ After installing the plugin, you'll have the **Captain Analytics** page under yo
 
 **Support:** [Captain Theme](http://captaintheme.com/)
 
-**Documentation:** [Captain Favicon Documentation](http://captaintheme.com/docs/captain-analytics-documentation/)
+**Documentation:** [Captain Theme Documentation](http://captaintheme.com/docs/captain-analytics-documentation/)
 
 ## Installation
 
