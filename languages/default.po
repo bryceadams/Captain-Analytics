@@ -1,0 +1,57 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Captain Analytics\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-11-01 12:39+1000\n"
+"PO-Revision-Date: 2012-11-01 12:39+1000\n"
+"Last-Translator: \n"
+"Language-Team: Captain Theme\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../captain-analytics.php:41
+msgid "Settings"
+msgstr ""
+
+#: ../captain-analytics.php:90
+msgid "Captain Analytics Settings"
+msgstr ""
+
+#: ../captain-analytics.php:91
+msgid ""
+"Enter the UA Code for your Google Anayltics Property below. Need Help? View "
+"<a href=\"http://captaintheme.com/docs/captain-analytics-documentation/"
+"\">Captain Analytics Documentation</a>."
+msgstr ""
+
+#: ../captain-analytics.php:99
+msgid "Property ID (UA Code)"
+msgstr ""
+
+#: ../captain-analytics.php:103
+msgid "Enable Google Analytics"
+msgstr ""
+
+#: ../captain-analytics.php:106
+msgid "Include the GA Tracking Code on your site?"
+msgstr ""
+
+#: ../captain-analytics.php:110
+msgid "Restore Default Settings"
+msgstr ""
+
+#: ../captain-analytics.php:113
+msgid "Restore defaults upon plugin deactivation/reactivation"
+msgstr ""
+
+#: ../captain-analytics.php:113
+msgid "Leave option unchecked to remember your settings"
+msgstr ""
+
+#: ../captain-analytics.php:118
+msgid "Save Settings"
+msgstr ""
