@@ -12,6 +12,14 @@ License: GNU GPL V2
 
 // Credit to Jeff Star (perishablepress.com/) for implementation inspiration
 
+
+// Load textdomain
+function ctanalytics_load_textdomain() {
+  load_plugin_textdomain( 'ctanalytics', false, dirname( plugin_basename( __FILE__ ) . '/languages/' ) ); 
+}
+add_action( 'plugins_loaded', 'ctanalytics_load_textdomain' );
+
+
 // Google Analytics Tracking Code (ga.js) (http://code.google.com/apis/analytics/docs/tracking/asyncUsageGuide.html)
 function ctanalytics_google_analytics_tracking_code() {
 	$ctanalytics_options = get_option('ctanalytics_options'); 
@@ -38,7 +46,7 @@ add_action( 'wp_head', 'ctanalytics_google_analytics_tracking_code' );
 
 
 // display settings link on plugin page
-function ct_analytics_action_links($links, $file) {
+function ct_analytics_action_links( $links, $file) {
 	if ( $file == plugin_basename( __FILE__ ) ) {
 		$ctanalytics_links = '<a href="'. get_admin_url() .'options-general.php?page=captain-analytics/captain-analytics.php">'. __( 'Settings', 'ctanalytics' ) .'</a>';
 		array_unshift( $links, $ctanalytics_links );
@@ -113,7 +121,7 @@ function ctanalytics_render_form() {
 				<tr valign="top">
 					<th scope="row"><label class="description" for="ctanalytics_options[ctanalytics_enable]"><?php _e( 'Enable Google Analytics', 'ctanalytics' ) ?></label></th>
 					<td>
-						<input name="ctanalytics_options[ctanalytics_enable]" type="checkbox" value="1" <?php if (isset($ctanalytics_options['ctanalytics_enable'])) { checked('1', $ctanalytics_options['ctanalytics_enable']); } ?> /> 
+						<input name="ctanalytics_options[ctanalytics_enable]" type="checkbox" value="1" <?php if ( isset( $ctanalytics_options['ctanalytics_enable'] ) ) { checked( '1', $ctanalytics_options['ctanalytics_enable'] ); } ?> /> 
 						<?php _e('Include the GA Tracking Code on your site?') ?>
 					</td>
 				</tr>
