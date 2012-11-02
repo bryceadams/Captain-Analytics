@@ -1,6 +1,8 @@
 # Captain Analytics
 
-*	**Contributors:** captaintheme
+*	**Contributors:**
+	*	captaintheme
+	*	sunnyratilal
 *	**Donate link:** [http://bryceadams.com/](http://bryceadams.com/)
 *	**Tags:** captain theme, analytics, google analytics, stats, wordpress stats, view stats, captain analytics
 *	**Requires at least:** 3.3
