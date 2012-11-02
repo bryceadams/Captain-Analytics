@@ -5,7 +5,7 @@ Plugin URI: http://captaintheme.com/plugins/analytics/
 Description: Easily add Google Analytics to your Wordpress Site.
 Author: Captain Theme
 Author URI: http://captaintheme.com
-Version: 1.0
+Version: 1.1
 Text Domain: ctanalytics
 License: GNU GPL V2
 */
