@@ -5,13 +5,12 @@ Plugin URI: http://captaintheme.com/plugins/analytics/
 Description: Easily add Google Analytics to your Wordpress Site.
 Author: Captain Theme
 Author URI: http://captaintheme.com
-Version: 1.1
+Version: 1.2
 Text Domain: ctanalytics
 License: GNU GPL V2
 */
 
 // Credit to Jeff Star (perishablepress.com/) for implementation inspiration
-
 
 // Load textdomain
 function ctanalytics_load_textdomain() {
@@ -21,9 +20,9 @@ add_action( 'plugins_loaded', 'ctanalytics_load_textdomain' );
 
 
 // Google Analytics Tracking Code (ga.js) (http://code.google.com/apis/analytics/docs/tracking/asyncUsageGuide.html)
-function ctanalytics_google_analytics_tracking_code() {
-	$ctanalytics_options = get_option('ctanalytics_options'); 
-	if ( $ctanalytics_options['ctanalytics_enable'] ) {
+function ctanalytics_tracking_code() {
+	$ctanalytics_options = get_option( 'ctanalytics_options' );
+	if ( $ctanalytics_options['ctanalytics_id'] != 'UA-XXXXX-X' ) { 
 		ob_start();
 	?>
 		<script type="text/javascript">
@@ -42,18 +41,18 @@ function ctanalytics_google_analytics_tracking_code() {
 	}
 }
 // include GA tracking code before the closing </head> tag
-add_action( 'wp_head', 'ctanalytics_google_analytics_tracking_code' );
+add_action( 'wp_head', 'ctanalytics_tracking_code' );
 
 
 // display settings link on plugin page
-function ct_analytics_action_links( $links, $file) {
+function ctanalytics_action_links( $links, $file) {
 	if ( $file == plugin_basename( __FILE__ ) ) {
 		$ctanalytics_links = '<a href="'. get_admin_url() .'options-general.php?page=captain-analytics/captain-analytics.php">'. __( 'Settings', 'ctanalytics' ) .'</a>';
 		array_unshift( $links, $ctanalytics_links );
 	}
 	return $links;
 }
-add_filter( 'plugin_action_links', 'ct_analytics_action_links', 10, 2 );
+add_filter( 'plugin_action_links', 'ctanalytics_action_links', 10, 2 );
 
 
 // remove plugin settings after deletion
@@ -66,7 +65,7 @@ register_uninstall_hook( __FILE__, 'ctanalytics_delete_plugin_options' );
 // define default settings
 function ctanalytics_add_defaults() {
 	$tmp = get_option( 'ctanalytics_options' );
-	if ( ( $tmp['default_options'] == '1' ) || ( !is_array( $tmp ) ) ) {
+	if ( !is_array( $tmp ) ) {
 		$arr = array( 'ctanalytics_id' => 'UA-XXXXX-X' );
 		update_option( 'ctanalytics_options', $arr );
 	}
@@ -83,13 +82,11 @@ add_action( 'admin_init', 'ctanalytics_init' );
 
 // sanitize and validate input
 function ctanalytics_validate_options( $input ) {
-	if ( !isset( $input['ctanalytics_enable'] ) )
-		$input['ctanalytics_enable'] = null;
 
-	$input['ctanalytics_enable'] = ( 1 == $input['ctanalytics_enable'] ? 1 : 0 );
 	$input['ctanalytics_id'] = wp_filter_nohtml_kses( $input['ctanalytics_id'] );
 
 	return $input;
+	
 }
 
 
@@ -117,20 +114,6 @@ function ctanalytics_render_form() {
 				<tr>
 					<th scope="row"><label class="description" for="ctanalytics_options[ctanalytics_id]"><?php _e( 'Property ID (UA Code)', 'ctanalytics' ) ?></label></th>
 					<td><input type="text" size="20" maxlength="20" name="ctanalytics_options[ctanalytics_id]" value="<?php echo $ctanalytics_options['ctanalytics_id']; ?>" /></td>
-				</tr>
-				<tr valign="top">
-					<th scope="row"><label class="description" for="ctanalytics_options[ctanalytics_enable]"><?php _e( 'Enable Google Analytics', 'ctanalytics' ) ?></label></th>
-					<td>
-						<input name="ctanalytics_options[ctanalytics_enable]" type="checkbox" value="1" <?php if ( isset( $ctanalytics_options['ctanalytics_enable'] ) ) { checked( '1', $ctanalytics_options['ctanalytics_enable'] ); } ?> /> 
-						<?php _e('Include the GA Tracking Code on your site?') ?>
-					</td>
-				</tr>
-				<tr valign="top">
-					<th scope="row"><label class="description" for="ctanalytics_options[default_options]"><?php _e( 'Restore Default Settings', 'ctanalytics' ) ?></label></th>
-					<td>
-						<input name="ctanalytics_options[default_options]" type="checkbox" value="1" <?php if ( isset( $ctanalytics_options['default_options'] ) ) { checked( '1', $ctanalytics_options['default_options'] ); } ?> /> 
-						<?php _e( 'Restore defaults upon plugin deactivation/reactivation', 'ctanalytics' ) ?><br /><em><?php _e( 'Leave option unchecked to remember your settings', 'ctanalytics' ) ?></em>
-					</td>
 				</tr>
 			</table>
 			<p class="submit">
