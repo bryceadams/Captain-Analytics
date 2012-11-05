@@ -33,13 +33,16 @@ How to install this plugin?
 
 ## Frequently Asked Questions
 
-**How do I create a UA Code?**
+>	**How do I create a UA Code?**
+	
 By creating a new Tracking Property in Google Analytics.
 
-**Where can I find my UA Code?**
+>	**Where can I find my UA Code?**
+	
 You can read [Google's Documentation](http://support.google.com/analytics/bin/answer.py?hl=en&answer=1032385) on this for further help, but it will be displayed after you create a property.
 
-**Where can I view my Analytics?**
+>	**Where can I view my Analytics?**
+	
 You'll need to go to Google Analytics to do that!
 
 ## Changelog
